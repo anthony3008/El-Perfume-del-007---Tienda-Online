@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>El Perfume del 007</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="brand"><i class="fas fa-user-secret"></i> EL PERFUME DEL 007</div>
+        <div>
+            <a href="/carrito">
+                <i class="fas fa-shopping-cart"></i> Carrito (<span th:text="${cartCount}">0</span>)
+            </a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h2>Colección Exclusiva</h2>
+        <div class="products-grid">
+            <div th:each="p : ${perfumes}" class="card">
+                <a th:href="@{/producto/{id}(id=${p.id})}">
+                    <img th:src="${p.imagenes[0]}" alt="Perfume">
+                </a>
+                <h3 th:text="${p.nombre}">Nombre</h3>
+                <div>
+                    <i th:if="${p.categoria == 'HOMBRE'}" class="fas fa-male fa-2x"></i>
+                    <i th:if="${p.categoria == 'MUJER'}" class="fas fa-female fa-2x"></i>
+                    <i th:if="${p.categoria == 'MIXTO'}" class="fas fa-users fa-2x"></i>
+                </div>
+                <p th:text="${p.origen}">Origen</p>
+                <div class="price" th:text="${p.precio} + ' €'"></div>
+                <a th:href="@{/producto/{id}(id=${p.id})}" class="btn">Ver Detalles</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

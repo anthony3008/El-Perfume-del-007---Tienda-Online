@@ -1,0 +1,8 @@
+com\perfumeshop\PerfumeShopApplication.class
+com\perfumeshop\service\CartService.class
+com\perfumeshop\controller\CartController.class
+com\perfumeshop\repository\PerfumeRepository.class
+com\perfumeshop\controller\HomeController.class
+com\perfumeshop\model\Perfume.class
+com\perfumeshop\service\PerfumeService.class
+com\perfumeshop\model\CartItem.class

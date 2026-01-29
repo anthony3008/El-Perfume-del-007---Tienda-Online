@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Tu Carrito</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="brand"><a href="/">EL PERFUME DEL 007</a></div>
+    </nav>
+
+    <div class="container">
+        <h1>Tu Maletín de Agente</h1>
+        <table style="width:100%; text-align:left; border-collapse: collapse; margin-bottom: 20px;">
+            <thead>
+                <tr style="border-bottom: 1px solid var(--primary-gold);">
+                    <th>Producto</th>
+                    <th>Precio</th>
+                    <th>Cant.</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="item : ${carrito}">
+                    <td th:text="${item.perfume.nombre}"></td>
+                    <td th:text="${item.perfume.precio} + ' €'"></td>
+                    <td th:text="${item.quantity}"></td>
+                    <td th:text="${item.getTotal()} + ' €'"></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h2 style="text-align:right;">Total: <span th:text="${total}"></span> €</h2>
+        
+        <div style="text-align:right;">
+            <a href="/" class="btn">Seguir Comprando</a>
+            <a href="/checkout" class="btn" style="background:var(--primary-gold); color:black;">PAGAR AHORA</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Detalle - 007</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="brand"><a href="/">EL PERFUME DEL 007</a></div>
+        <div><a href="/carrito">Volver al Carrito</a></div>
+    </nav>
+
+    <div class="container detail-container">
+        <div class="images-section">
+            <img th:src="${perfume.imagenes[0]}" style="width:100%; max-width:400px; border:2px solid var(--primary-gold);">
+            <div class="gallery">
+                <img th:each="img : ${perfume.imagenes}" th:src="${img}">
+            </div>
+        </div>
+        <div class="info-section">
+            <h1 th:text="${perfume.nombre}"></h1>
+            <h2 class="price" th:text="${perfume.precio} + ' €'"></h2>
+            <p th:text="${perfume.descripcion}"></p>
+            <p><strong>Origen:</strong> <span th:text="${perfume.origen}"></span></p>
+            
+            <form action="/carrito/agregar" method="post">
+                <input type="hidden" name="id" th:value="${perfume.id}">
+                <label>Cantidad:</label>
+                <input type="number" name="cantidad" value="1" min="1" max="10" style="padding:5px;">
+                <button type="submit" class="btn">AÑADIR AL CARRITO <i class="fas fa-cart-plus"></i></button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
